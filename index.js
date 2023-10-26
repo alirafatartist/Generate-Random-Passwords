@@ -13,10 +13,16 @@ function genpass(length = 16) {
 
   input.value = password;
   copyBtn.classList.replace("fa-check", "fa-clone");
-  copyBtn.innerHTML = "";
+  copyBtn.classList.replace("green", "fa-clone");
+  copyBtn.innerText = "";
+  copyBtn.style.fontFamily = "";
 }
 // copy password function
-function copyPassword() {
+async function copyPassword() {
   navigator.clipboard.writeText(input.value);
   copyBtn.classList.replace("fa-clone", "fa-check");
+  await new Promise((test) => setTimeout(test, 1000));
+  copyBtn.innerText = "Copied";
+  copyBtn.classList.replace("fa-check", "green");
+  copyBtn.style.fontFamily = "Tahoma";
 }
